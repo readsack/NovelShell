@@ -9,7 +9,9 @@ import QtQuick
 import QtQuick.Window
 import QtQuick.Layouts
 import Quickshell.Services.Mpris
+import Quickshell.Networking
 
+import "./Modules"
 
 PanelWindow {
     anchors {
@@ -45,7 +47,7 @@ PanelWindow {
             
             AudioModule{}
             PowerModule{}
-            
+            WifiModule{}
         }
         
     }

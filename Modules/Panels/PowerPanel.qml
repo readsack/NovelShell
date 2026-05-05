@@ -8,29 +8,8 @@ import QtQuick.Controls
 import QtQuick
 import QtQuick.Window
 
-
-
-Text {
-    id: power_module
-    color: "#ffffff"
-    property var power: UPower.displayDevice.percentage
-    property var icon: UPower.displayDevice.timeToEmpty == 0? "󱟠" : "󱟞" 
-    property bool charging: UPower.displayDevice.timeToEmpty == 0 
-    property var chargingTime: UPower.displayDevice.timeToFull
-    property var emptyTime: UPower.displayDevice.timeToEmpty
-    property bool showPanel: false 
-    text: "%2 %1%".arg(Math.trunc(power*100)).arg(icon)
-    font {
-        pixelSize: 16
-        weight: 700
-        family: "Iosevka Nerd Font"
-    }
-    MouseArea {
-        anchors.fill: parent
-        onClicked: parent.showPanel = !parent.showPanel 
-    }
-
-    PanelWindow {
+PanelWindow {
+        required property var power_module
         anchors {
             right: true
             top: true
@@ -38,6 +17,7 @@ Text {
         margins {
             top: 10
         }
+        
         implicitWidth: 250
         implicitHeight: 170
         margins.right: power_module.showPanel ? 10 : -implicitWidth - 50
@@ -190,6 +170,3 @@ Text {
         }
         
     }
-    
-}
-            
