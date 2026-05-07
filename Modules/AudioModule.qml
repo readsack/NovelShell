@@ -25,7 +25,7 @@ Text {
     property var volume: Pipewire.defaultAudioSink?.audio.volume ?? 0
     text: "󰕾 %1%".arg(Math.trunc(volume * 100))
     font {
-        pixelSize: 16
+        pixelSize: 14
         weight: 700
         family: "Iosevka Nerd Font"
     }
@@ -38,7 +38,13 @@ Text {
         property var dir
         onWheel: (wheel) => {
             dir = wheel.angleDelta.y > 0 ? 1 : -1
-            Pipewire.defaultAudioSink.audio.volume = Math.max(0, Math.min(parent.volume + 0.05 * dir, 1.5));
+            if(wheel.angleDelta.y < 0 && parent.volume > 0){
+                Pipewire.defaultAudioSink.audio.volume -= 0.05
+            }
+            if(wheel.angleDelta.y > 0 && parent.volume < 1.5){
+                Pipewire.defaultAudioSink.audio.volume += 0.05
+            }
+            
         }
     }
     HyprlandFocusGrab {

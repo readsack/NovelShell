@@ -35,7 +35,7 @@ PanelWindow {
                 Text{
                     color: "#ffffff"
                     font {
-                        pixelSize: 16
+                        pixelSize: 14
                         weight: 700
                         family: "Iosevka Nerd Font"
                     }
@@ -47,7 +47,7 @@ PanelWindow {
                     property var timeText: "%1H %2M".arg(Math.trunc(timetoShow/3600)).arg(Math.trunc((timetoShow%3600)/60))
                     color: "#ffffff"
                     font {
-                        pixelSize: 16
+                        pixelSize: 14
                         weight: 700
                         family: "Iosevka Nerd Font"
                     }
@@ -57,7 +57,7 @@ PanelWindow {
                 Text{
                     color: "#ffffff"
                     font {
-                        pixelSize: 16
+                        pixelSize: 14
                         weight: 700
                         family: "Iosevka Nerd Font"
                     }

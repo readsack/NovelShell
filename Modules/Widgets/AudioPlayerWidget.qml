@@ -48,8 +48,8 @@ Column {
                                 to: 360
                                 duration: 3000       // Speed (3 seconds per full rotation)
                                 loops: Animation.Infinite
-                                running: true
-                            }
+                                running: media_player.player?.playbackState == MprisPlaybackState.Playing
+                        }
                         Image {
                             id: track_image
                             width:70

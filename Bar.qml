@@ -47,7 +47,10 @@ PanelWindow {
             
             AudioModule{}
             PowerModule{}
+            BluetoothModule{}
             WifiModule{}
+            SysTrayModule{}
+            NotificationModule{}
         }
         
     }

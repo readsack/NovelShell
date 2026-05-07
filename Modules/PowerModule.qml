@@ -21,7 +21,7 @@ Text {
     property bool showPanel: false 
     text: "%2 %1%".arg(Math.trunc(power*100)).arg(icon)
     font {
-        pixelSize: 16
+        pixelSize: 14
         weight: 700
         family: "Iosevka Nerd Font"
     }
