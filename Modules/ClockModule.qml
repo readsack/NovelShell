@@ -29,7 +29,7 @@ Text {
 
     Process {
         id: dateProc
-        command: clock.showDate?["date", "+%d %a, %G"]:["date", "+%H:%M"]
+        command: clock.showDate?["date", "+%d %b, %G"]:["date", "+%H:%M"]
         running: true
                 
         stdout: StdioCollector {
