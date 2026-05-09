@@ -7,53 +7,64 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Window
 import Quickshell.Bluetooth
+import Quickshell.Widgets
 
-Rectangle {
+WrapperMouseArea{
     implicitHeight: 20
-    implicitWidth: 300
-    id: blue_device
-    color: "#00000000"
-    radius: 10
-    property var device: Bluetooth.defaultAdapter.devices.values[index]
-    Text {
-        anchors.left: parent.left
-        anchors.leftMargin: 10
-        anchors.verticalCenter: parent.verticalCenter
-                                    color: "#ffffff"
-                                    text: parent.device.name
-                                    font {
-                                        pixelSize: 14
-                                        weight: 400
-                                        family: "Iosevka Nerd Font"
-                                    }
-                                }
-                                Text {
-                                    anchors.right: parent.right
-                                    anchors.rightMargin: 10
-                                    anchors.verticalCenter: parent.verticalCenter
-                                    color: "#ffffff"
-                                    text: parent.device.connected 
-                                                ? "connected" 
-                                                : parent.device.state === BluetoothDeviceState.Connecting 
-                                                        ? "connecting" 
-                                                        : parent.device.state === BluetoothDeviceState.Disconnecting
-                                                                ? "disconnecting"
-                                                                : ""
-                                    font {
-                                        pixelSize: 14
-                                        weight: 600
-                                        family: "Iosevka Nerd Font"
-                                    }
-                                }
-                                MouseArea {
-                                    anchors.fill: parent
-                                    onClicked: {
-                                        if(parent.device.state == BluetoothDeviceState.Connected){
-                                            parent.device.disconnect()
-                                        }
-                                        if(parent.device.state == BluetoothDeviceState.Disconnected){
-                                            parent.device.connect()
-                                        }
-                                    }
-                                }
-                            }
+    implicitWidth: 400
+    RowLayout {
+        implicitHeight: 20
+        implicitWidth: 400
+        id: blue_device
+        
+        property var device: Bluetooth.defaultAdapter.devices.values[index]
+        Text {
+            color: "#ffffff"
+            text: parent.device.name
+            font {
+                pixelSize: 14
+                weight: 400
+                family: "Iosevka Nerd Font"
+            }
+            width: 150
+            elide: Text.ElideRight
+        }
+        
+        Text {
+            color: "#ffffff"
+            Layout.fillWidth: true
+            horizontalAlignment: Text.AlignHCenter
+            text: parent.device.connected 
+                        ? "󰂱"
+                        : parent.device.state === BluetoothDeviceState.Connecting 
+                                ? "󰂰" 
+                                : ""
+            font {
+                pixelSize: 14
+                weight: 600
+                family: "Iosevka Nerd Font"
+            }
+        }
+
+        Text {
+            width: 100
+            visible: parent.device.connected
+            color: "#ffffff"
+            text: "%1%".arg(Math.trunc(parent.device.battery * 100))
+            font {
+                pixelSize: 14
+                weight: 600
+                family: "Iosevka Nerd Font"
+            }
+        }
+    }                             
+    onClicked: {
+        if(blue_device.device.state == BluetoothDeviceState.Connected){
+            blue_device.device.disconnect()
+        }
+        if(blue_device.device.state == BluetoothDeviceState.Disconnected){
+            blue_device.device.connect()
+        }
+    }
+
+}

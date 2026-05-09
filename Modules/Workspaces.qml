@@ -22,7 +22,7 @@ Row {
             height: 20
             property var ws: Hyprland.workspaces.values[index]
             property bool isActive: Hyprland.focusedWorkspace?.id === ws.id    
-            color: isActive?"#ffffff":"#000000"
+            color: isActive?"#ffffff":'#07000000'
             radius: 3
             MouseArea {
                 anchors.fill: parent

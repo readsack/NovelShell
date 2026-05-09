@@ -19,7 +19,7 @@ PanelWindow {
         margins {
             top: 10
         }
-        implicitWidth: 350
+        implicitWidth: 450
         implicitHeight: 250
         margins.right: showPanel ? 10 : -implicitWidth - 50
         color: "#00000000"
@@ -29,10 +29,10 @@ PanelWindow {
         Rectangle {
             color: "#080808"
             anchors.fill: parent
-            radius: 10
+            radius: 5
             ColumnLayout {
                 implicitHeight: 280
-                implicitWidth: 300
+                implicitWidth: 400
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.top: parent.top
                 anchors.topMargin: 20

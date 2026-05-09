@@ -11,11 +11,10 @@ A Quickshell Configuration, made by yours truly
     - [x] Bluetooth
     - [x] Wifi
     - [x] System Tray
-    - [ ] Notifications
-    - [ ] System resources
-    - [ ] IdleInhibitor
+    - [x] Notifications
+    - [x] IdleInhibitor
 
 - [ ] App Launcher
-- [ ] Notification Viewer
+- [x] Notification Viewer
 - [ ] Lockscreen
 

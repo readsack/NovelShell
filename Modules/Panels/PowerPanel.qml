@@ -25,7 +25,7 @@ PanelWindow {
         Rectangle {
             anchors.fill: parent
             color: "#080808"
-            radius: 10
+            radius: 5
             Column{
                 anchors.left: parent.left
                 anchors.top: parent.top

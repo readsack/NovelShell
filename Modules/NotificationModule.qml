@@ -1,4 +1,5 @@
 import Quickshell
+import Quickshell.Widgets
 import Quickshell.Io
 import Quickshell.Wayland
 import Quickshell.Hyprland
@@ -9,7 +10,7 @@ import Quickshell.Services.Notifications
 import QtQuick.Layouts
 
 Text {
-    id: systray_module
+    id: notif_module
     property bool showPanel: false
     color: "#ffffff"
     font {
@@ -20,9 +21,96 @@ Text {
     text: ""
     MouseArea {
         anchors.fill: parent
-        onClicked: parent.showPanel = !parent.showPanel
+        onClicked: {
+            parent.showPanel = !parent.showPanel
+            notif_panel_grab.active = parent.showPanel
+        }
+    }
+    NotificationServer{
+        id: notif_server
+        onNotification:(n)=>{
+                n.tracked = true
+                notification_item.notif = n
+                notif_timer.running = true
+                notification_item.show_notif = true
+        }
+    }
+    HyprlandFocusGrab {
+            id: notif_panel_grab
+            windows: [ notif_panel ]
+            onCleared: {
+                notif_module.showPanel = false
+            }
     }
     PanelWindow {
+        id: notification_item
+        property bool show_notif: false
+        property var notif: null
+
+        anchors {
+            right: true
+            top: true
+        }
+        margins {
+            top: 10
+            right: show_notif ? 10 : -implicitWidth - 50
+
+        }
+        implicitWidth: 270
+        implicitHeight: 75
+
+        color: "#00000000"
+        Rectangle {
+            anchors.fill: parent
+            radius: 10
+            color: "#080808"
+            Column {
+                anchors.fill: parent
+                anchors.margins: 10
+                                        Text {
+
+                                            color: "#ffffff"
+                                            text: notification_item.notif.summary
+                                            font {
+                                                pixelSize: 15
+                                                weight: 700
+                                                family: "Iosevka Nerd Font"
+                                            }
+                                        }
+                                        Text {
+                                            color: "#ffffff"
+                                            text: notification_item.notif.body
+                                            width: 250 - 30
+                                            
+                                            elide: Text.ElideMiddle
+                                            font {
+                                                pixelSize: 14
+                                                weight: 400
+                                                family: "Iosevka Nerd Font"
+                                            }
+                                        }
+                                        Text {
+                                            color: "#ffffff"
+                                            text: "From: %1".arg(notification_item.notif.appName)
+                                            font {
+                                                pixelSize: 12
+                                                weight: 400
+                                                family: "Iosevka Nerd Font"
+                                            }
+                                        }
+                                    }
+        }
+        Timer {
+            id: notif_timer
+            interval: 2000
+            running: false
+            onTriggered: notification_item.show_notif = false
+            
+        }
+    }
+    
+    PanelWindow {
+        id: notif_panel
         anchors {
             right: true
             top: true
@@ -31,12 +119,12 @@ Text {
             top: 10
         }
         implicitWidth: 250
-        implicitHeight: 250
-        margins.right: systray_module.showPanel ? 10 : -implicitWidth - 50
+        implicitHeight: 300
+        margins.right: notif_module.showPanel ? 10 : -implicitWidth - 50
         color: "#00000000"
         Rectangle {
             anchors.fill: parent
-            radius: 10
+            radius: 5
             color: "#080808"
             ColumnLayout {
                 implicitWidth: parent.width - 20
@@ -65,26 +153,56 @@ Text {
                     implicitWidth: parent.width
                     ScrollView {
                         implicitHeight: parent.height
-                        implicitWidth: parent.width
                         clip: true
-                        Repeater  {
-                            model: NotificationServer.trackedNotifications.values
-                            RowLayout {
-                                implicitWidth: parent.width
-                                implicitHeight: 50
-                                
-                                Text {
-                                    color: "#ffffff"
-                                    font {
-                                        pixelSize: 14
-                                        weight: 700
-                                        family: "Iosevka Nerd Font"
+                        ColumnLayout {
+                            implicitWidth: 250
+                            implicitHeight: parent.height
+                            Repeater  {
+                                model: notif_server.trackedNotifications.values
+                                WrapperMouseArea{
+
+                                    child: Column {
+                                        Text {
+
+                                            color: "#ffffff"
+                                            text: modelData.summary
+                                            font {
+                                                pixelSize: 15
+                                                weight: 700
+                                                family: "Iosevka Nerd Font"
+                                            }
+                                        }
+                                        Text {
+                                            color: "#ffffff"
+                                            text: modelData.body
+                                            width: 250 - 30
+                                            wrapMode: Text.Wrap
+                                            font {
+                                                pixelSize: 14
+                                                weight: 400
+                                                family: "Iosevka Nerd Font"
+                                            }
+                                        }
+                                        Text {
+                                            color: "#ffffff"
+                                            text: "From: %1".arg(modelData.appName)
+                                            font {
+                                                pixelSize: 12
+                                                weight: 400
+                                                family: "Iosevka Nerd Font"
+                                            }
+                                        }
                                     }
-                                    text: NotificationServer.trackedNotifications?.values[index].body
+                                    onClicked: {
+                                        modelData.dismiss()
+                                    }
                                 }
+                                
+                                
+
                             }
-                            
                         }
+                        
                     }
                 }
             }

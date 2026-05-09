@@ -20,9 +20,20 @@ Text {
     text: ""
     MouseArea {
         anchors.fill: parent
-        onClicked: parent.showPanel = !parent.showPanel
+        onClicked: {
+            parent.showPanel = !parent.showPanel
+            systray_grab.active = systray_module.showPanel
+        }
+    }
+    HyprlandFocusGrab {
+        id: systray_grab 
+        windows: [ systray_panel ]
+        onCleared: {
+            systray_module.showPanel = false
+        }
     }
     PanelWindow {
+        id: systray_panel
         anchors {
             right: true
             top: true
@@ -36,8 +47,8 @@ Text {
         color: "#00000000"
         Rectangle {
             anchors.fill: parent
-            radius: 10
-            color: "#080808"
+            radius: 5
+            color: '#080808'
             ColumnLayout {
                 implicitWidth: parent.width - 20
                 height: parent.height - 40

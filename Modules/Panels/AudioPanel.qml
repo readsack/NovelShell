@@ -22,12 +22,7 @@ PanelWindow {
             top: 10
         }
 
-        Timer {
-            running: audio_playback_widget.player?.playbackState == MprisPlaybackState.Playing
-            interval: 1000
-            repeat: true
-            onTriggered: audio_playback_widget.player?.positionChanged()
-        }
+        
         
         Connections {
             function onObjectRemovedPre(object, idx) {
@@ -47,7 +42,7 @@ PanelWindow {
 
             anchors.fill: parent
             color: "#080808"
-            radius: 10
+            radius: 5
             //Player Selector
             Item {
                 width: parent.width - 30
