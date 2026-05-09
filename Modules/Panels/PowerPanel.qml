@@ -7,6 +7,7 @@ import Quickshell.Services.UPower
 import QtQuick.Controls
 import QtQuick
 import QtQuick.Window
+import "../"
 
 PanelWindow {
         required property var power_module
@@ -21,10 +22,10 @@ PanelWindow {
         implicitWidth: 250
         implicitHeight: 170
         margins.right: power_module.showPanel ? 10 : -implicitWidth - 50
-        color: "#00000000"
+        color: "transparent"
         Rectangle {
             anchors.fill: parent
-            color: "#080808"
+            color: Theme.backgroundColor
             radius: 5
             Column{
                 anchors.left: parent.left
@@ -33,7 +34,7 @@ PanelWindow {
                 anchors.right: parent.right
                 spacing: 10
                 Text{
-                    color: "#ffffff"
+                    color: Theme.primaryTextColor
                     font {
                         pixelSize: 14
                         weight: 700
@@ -45,7 +46,7 @@ PanelWindow {
                 Text{
                     property var timetoShow: power_module.charging ? power_module.chargingTime : power_module.emptyTime
                     property var timeText: "%1H %2M".arg(Math.trunc(timetoShow/3600)).arg(Math.trunc((timetoShow%3600)/60))
-                    color: "#ffffff"
+                    color: Theme.primaryTextColor
                     font {
                         pixelSize: 14
                         weight: 700
@@ -55,7 +56,7 @@ PanelWindow {
                     
                 }
                 Text{
-                    color: "#ffffff"
+                    color: Theme.primaryTextColor
                     font {
                         pixelSize: 14
                         weight: 700
@@ -78,7 +79,7 @@ PanelWindow {
                         width: 50
                         height: 50
                         radius: 20
-                        color: "#ffffff"
+                        color: Theme.primaryTextColor
 
                         Behavior on x {
                             PropertyAnimation {duration: 100}
@@ -89,7 +90,7 @@ PanelWindow {
                         anchors.left: parent.left
                         anchors.verticalCenter: parent.verticalCenter
                         id: power_profile_1
-                        color: profile_switcher.selected == 0 ? "#080808" :"#ffffff"
+                        color: profile_switcher.selected == 0 ? Theme.backgroundColor :Theme.primaryTextColor
                         font {
                             pixelSize: 25
                             weight: 700
@@ -113,7 +114,7 @@ PanelWindow {
                         anchors.horizontalCenter: parent.horizontalCenter
                         anchors.verticalCenter: parent.verticalCenter
                         id: power_profile_2
-                        color: profile_switcher.selected == 1 ? "#080808" :"#ffffff"
+                        color: profile_switcher.selected == 1 ? Theme.backgroundColor :Theme.primaryTextColor
                         font {
                             pixelSize: 25
                             weight: 700
@@ -137,7 +138,7 @@ PanelWindow {
                         anchors.right: parent.right
                         anchors.verticalCenter: parent.verticalCenter
                         id: power_profile_3
-                        color: PowerProfiles.hasPerformanceProfile ? profile_switcher.selected == 2 ? "#080808" :"#ffffff" : "#666666"
+                        color: PowerProfiles.hasPerformanceProfile ? profile_switcher.selected == 2 ? Theme.backgroundColor :Theme.primaryTextColor : Theme.disabledColor
                         font {
                             pixelSize: 25
                             weight: 700

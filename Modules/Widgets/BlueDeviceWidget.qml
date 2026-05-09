@@ -8,6 +8,7 @@ import QtQuick.Layouts
 import QtQuick.Window
 import Quickshell.Bluetooth
 import Quickshell.Widgets
+import "../"
 
 WrapperMouseArea{
     implicitHeight: 20
@@ -19,7 +20,7 @@ WrapperMouseArea{
         
         property var device: Bluetooth.defaultAdapter.devices.values[index]
         Text {
-            color: "#ffffff"
+            color: Theme.primaryTextColor
             text: parent.device.name
             font {
                 pixelSize: 14
@@ -31,7 +32,7 @@ WrapperMouseArea{
         }
         
         Text {
-            color: "#ffffff"
+            color: Theme.primaryTextColor
             Layout.fillWidth: true
             horizontalAlignment: Text.AlignHCenter
             text: parent.device.connected 
@@ -49,7 +50,7 @@ WrapperMouseArea{
         Text {
             width: 100
             visible: parent.device.connected
-            color: "#ffffff"
+            color: Theme.primaryTextColor
             text: "%1%".arg(Math.trunc(parent.device.battery * 100))
             font {
                 pixelSize: 14

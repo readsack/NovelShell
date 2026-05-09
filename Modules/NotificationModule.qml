@@ -12,7 +12,7 @@ import QtQuick.Layouts
 Text {
     id: notif_module
     property bool showPanel: false
-    color: "#ffffff"
+    color: Theme.primaryTextColor
     font {
         pixelSize: 14
         weight: 700
@@ -59,18 +59,18 @@ Text {
         implicitWidth: 270
         implicitHeight: 75
 
-        color: "#00000000"
+        color: "transparent"
         Rectangle {
             anchors.fill: parent
             radius: 10
-            color: "#080808"
+            color: Theme.backgroundColor
             Column {
                 anchors.fill: parent
                 anchors.margins: 10
                                         Text {
 
-                                            color: "#ffffff"
-                                            text: notification_item.notif.summary
+                                            color: Theme.primaryTextColor
+                                            text: notification_item.notif?.summary
                                             font {
                                                 pixelSize: 15
                                                 weight: 700
@@ -78,8 +78,8 @@ Text {
                                             }
                                         }
                                         Text {
-                                            color: "#ffffff"
-                                            text: notification_item.notif.body
+                                            color: Theme.primaryTextColor
+                                            text: notification_item.notif?.body
                                             width: 250 - 30
                                             
                                             elide: Text.ElideMiddle
@@ -90,8 +90,8 @@ Text {
                                             }
                                         }
                                         Text {
-                                            color: "#ffffff"
-                                            text: "From: %1".arg(notification_item.notif.appName)
+                                            color: Theme.primaryTextColor
+                                            text: "From: %1".arg(notification_item.notif?.appName)
                                             font {
                                                 pixelSize: 12
                                                 weight: 400
@@ -121,17 +121,17 @@ Text {
         implicitWidth: 250
         implicitHeight: 300
         margins.right: notif_module.showPanel ? 10 : -implicitWidth - 50
-        color: "#00000000"
+        color: "transparent"
         Rectangle {
             anchors.fill: parent
             radius: 5
-            color: "#080808"
+            color: Theme.backgroundColor
             ColumnLayout {
                 implicitWidth: parent.width - 20
                 height: parent.height - 40
                 anchors.centerIn: parent
                 Text {
-                    color: "#ffffff"
+                    color: Theme.primaryTextColor
                     font {
                         pixelSize: 17
                         weight: 400
@@ -142,7 +142,7 @@ Text {
                 Rectangle {
                     implicitWidth: parent.width
                     implicitHeight: 10
-                    color: "#00ffffff"
+                    color: "transparent"
                     Rectangle {
                         implicitWidth: parent.width
                         implicitHeight: 2
@@ -164,7 +164,7 @@ Text {
                                     child: Column {
                                         Text {
 
-                                            color: "#ffffff"
+                                            color: Theme.primaryTextColor
                                             text: modelData.summary
                                             font {
                                                 pixelSize: 15
@@ -173,7 +173,7 @@ Text {
                                             }
                                         }
                                         Text {
-                                            color: "#ffffff"
+                                            color: Theme.primaryTextColor
                                             text: modelData.body
                                             width: 250 - 30
                                             wrapMode: Text.Wrap
@@ -184,7 +184,7 @@ Text {
                                             }
                                         }
                                         Text {
-                                            color: "#ffffff"
+                                            color: Theme.primaryTextColor
                                             text: "From: %1".arg(modelData.appName)
                                             font {
                                                 pixelSize: 12

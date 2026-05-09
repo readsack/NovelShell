@@ -13,6 +13,9 @@ import Quickshell.Services.Mpris
 import Qt5Compat.GraphicalEffects
 import "../Widgets"
 
+import "../"
+
+
 PanelWindow {
         anchors {
             right: true
@@ -34,14 +37,14 @@ PanelWindow {
         implicitWidth: 250
         implicitHeight: 50 + 210
         margins.right: audio_module.showPanel ? 10 : -implicitWidth - 50
-        color: "#00000000"
+        color: "transparent"
         Rectangle {
             id: audio_playback_widget
             property var selectedID: 0
             property var player: Mpris.players.values[selectedID]
 
             anchors.fill: parent
-            color: "#080808"
+            color: Theme.backgroundColor
             radius: 5
             //Player Selector
             Item {
@@ -52,7 +55,7 @@ PanelWindow {
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.left: parent.left
                     anchors.leftMargin: 20
-                    color:"#ffffff"
+                    color:Theme.primaryTextColor
                     text: ""
                     font {
                         pixelSize: 14
@@ -70,7 +73,7 @@ PanelWindow {
                 Text {
                     anchors.centerIn: parent
                     anchors.leftMargin: 20
-                    color:"#ffffff"
+                    color:Theme.primaryTextColor
                     text: audio_playback_widget.selectedID + 1
                     font {
                         pixelSize: 14
@@ -82,7 +85,7 @@ PanelWindow {
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.right: parent.right
                     anchors.rightMargin: 20
-                    color:"#ffffff"
+                    color:Theme.primaryTextColor
                     text: ""
                     font {
                         pixelSize: 14

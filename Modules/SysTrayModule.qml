@@ -11,7 +11,7 @@ import QtQuick.Layouts
 Text {
     id: systray_module
     property bool showPanel: false
-    color: "#ffffff"
+    color: Theme.primaryTextColor
     font {
         pixelSize: 14
         weight: 700
@@ -44,17 +44,17 @@ Text {
         implicitWidth: 250
         implicitHeight: 250
         margins.right: systray_module.showPanel ? 10 : -implicitWidth - 50
-        color: "#00000000"
+        color: "transparent"
         Rectangle {
             anchors.fill: parent
             radius: 5
-            color: '#080808'
+            color: Theme.backgroundColor
             ColumnLayout {
                 implicitWidth: parent.width - 20
                 height: parent.height - 40
                 anchors.centerIn: parent
                 Text {
-                    color: "#ffffff"
+                    color: Theme.primaryTextColor
                     font {
                         pixelSize: 17
                         weight: 400
@@ -65,7 +65,7 @@ Text {
                 Rectangle {
                     implicitWidth: parent.width
                     implicitHeight: 10
-                    color: "#00ffffff"
+                    color: "transparent"
                     Rectangle {
                         implicitWidth: parent.width
                         implicitHeight: 2
@@ -93,7 +93,7 @@ Text {
                                         anchors.horizontalCenter: parent.horizontalCenter
                                         anchors.left: parent.left
                                         Text {
-                                            color: "#ffffff"
+                                            color: Theme.primaryTextColor
                                             font {
                                                 pixelSize: 14
                                                 weight: 700
@@ -105,7 +105,7 @@ Text {
                                         Rectangle {
                                             implicitWidth: 20
                                             implicitHeight: 20
-                                            color: "#00ffffff"
+                                            color: "transparent"
                                             Image {
                                                 source: SystemTray.items.values[index].icon
                                                 width: 20
@@ -113,7 +113,7 @@ Text {
                                             }
                                         }
                                         Text {
-                                            color: "#ffffff"
+                                            color: Theme.primaryTextColor
                                             font {
                                                 pixelSize: 14
                                                 weight: 700
@@ -123,7 +123,7 @@ Text {
                                         }
                                         
                                         Text {
-                                            color: "#ffffff"
+                                            color: Theme.primaryTextColor
                                             font {
                                                 pixelSize: 14
                                                 weight: 700

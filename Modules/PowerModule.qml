@@ -12,7 +12,7 @@ import "./Panels"
 
 Text {
     id: power_module
-    color: "#ffffff"
+    color: Theme.primaryTextColor
     property var power: UPower.displayDevice.percentage
     property var icon: UPower.displayDevice.timeToEmpty == 0? "󱟠" : "󱟞" 
     property bool charging: UPower.displayDevice.timeToEmpty == 0 

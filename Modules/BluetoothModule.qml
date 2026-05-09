@@ -11,7 +11,7 @@ import "./Panels/"
 
 Text{
     id: blue_module
-    color: "#ffffff"
+    color: Theme.primaryTextColor
     font {
         pixelSize: 14
         weight: 700

@@ -21,7 +21,7 @@ Text {
     
     id: audio_module
     property bool showPanel: false 
-    color: "#ffffff"
+    color: Theme.primaryTextColor
     property var volume: Pipewire.defaultAudioSink?.audio.volume ?? 0
     text: "󰕾 %1%".arg(Math.trunc(volume * 100))
     font {

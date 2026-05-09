@@ -14,7 +14,7 @@ Text {
     property bool showDate: false
     id: clock
     anchors.centerIn: parent
-    color: "#ffffff"
+    color: Theme.primaryTextColor
     font {
         weight: 700
         pixelSize: 14

@@ -10,7 +10,7 @@ import Quickshell.Networking
 
 Text{
     id: wifi_module
-    color: "#ffffff"
+    color: Theme.primaryTextColor
     property var wifi: ""
     font {
         pixelSize: 14

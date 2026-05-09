@@ -11,6 +11,7 @@ import QtQuick.Window
 import QtQuick.Layouts
 import Quickshell.Services.Mpris
 import Qt5Compat.GraphicalEffects
+import "../"
 
     
 
@@ -22,7 +23,6 @@ Column {
             onTriggered: player.positionChanged()
         }
                     required property var player
-                    required property var index
                     required property var selectedID
                     id: media_player
                     anchors.bottom: parent.bottom
@@ -32,7 +32,7 @@ Column {
                     clip: true
                     spacing: 10
                     Text {
-                        color: "#ffffff"
+                        color: Theme.primaryTextColor
                         font {
                             pixelSize: 17
                             weight: 300
@@ -71,7 +71,7 @@ Column {
                             id: track_image_placeholder
                             width: 70
                             height: 70
-                            color: "#ffffff"
+                            color: Theme.primaryTextColor
                             visible: false
                         }
                         OpacityMask {
@@ -87,7 +87,7 @@ Column {
                    
                     Column {
                         Text {
-                            color: "#ffffff"
+                            color: Theme.primaryTextColor
                             font {
                                 pixelSize: 14
                                 weight: 700
@@ -98,7 +98,7 @@ Column {
                             text: player?.trackTitle
                         }
                         Text {
-                            color: "#ffffff"
+                            color: Theme.primaryTextColor
                             font {
                                 pixelSize: 14
                                 weight: 300
@@ -115,18 +115,18 @@ Column {
                         contentItem: Rectangle {
                             implicitWidth: 200
                             implicitHeight: 5
-                            color: "#666666"
+                            color: Theme.disabledColor
                             radius: 10
                             Rectangle {
                                 implicitWidth: 200 * playback_progress_bar.visualPosition
                                 implicitHeight: 5
-                                color: "#ffffff"
+                                color: Theme.primaryTextColor
                                 radius: 10
                             }
                             
                         }
                         background: Rectangle {
-                            color: "#080808"
+                            color: Theme.backgroundColor
                             implicitWidth: 200
                         }
                     }
@@ -138,7 +138,7 @@ Column {
                             anchors.verticalCenter: parent.verticalCenter
                             anchors.left: parent.left
                             anchors.leftMargin: 20
-                            color: disabled ?"#666666":"#ffffff"
+                            color: disabled ?Theme.disabledColor:Theme.primaryTextColor
                             text: "󰒮"
                             font {
                                 pixelSize: 24
@@ -159,7 +159,7 @@ Column {
                             anchors.verticalCenter: parent.verticalCenter
                             anchors.horizontalCenter: parent.horizontalCenter
                             anchors.leftMargin: 20
-                            color: disabled ?"#666666":"#ffffff"
+                            color: disabled ?Theme.disabledColor:Theme.primaryTextColor
                             text: !isPlaying?"󰏤":"󰐊"
                             font {
                                 pixelSize: 24
@@ -179,7 +179,7 @@ Column {
                             anchors.verticalCenter: parent.verticalCenter
                             anchors.right: parent.right
                             anchors.rightMargin: 20
-                            color: disabled ?"#666666":"#ffffff"
+                            color: disabled ?Theme.disabledColor:Theme.primaryTextColor
                             text: "󰒭"
                             font {
                                 pixelSize: 24

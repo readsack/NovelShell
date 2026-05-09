@@ -8,6 +8,8 @@ import QtQuick.Layouts
 import QtQuick.Window
 import Quickshell.Bluetooth
 import "../Widgets"
+import "../"
+
 
 PanelWindow {
         required property bool showPanel
@@ -22,12 +24,12 @@ PanelWindow {
         implicitWidth: 450
         implicitHeight: 250
         margins.right: showPanel ? 10 : -implicitWidth - 50
-        color: "#00000000"
+        color: "transparent"
         visible: true
         property var adapter: Bluetooth.defaultAdapter
         property var connected: false
         Rectangle {
-            color: "#080808"
+            color: Theme.backgroundColor
             anchors.fill: parent
             radius: 5
             ColumnLayout {
@@ -40,12 +42,12 @@ PanelWindow {
                     clip: true
                     implicitWidth: parent.width - 20
                     implicitHeight: 20
-                    color: "#00000000"
+                    color: "transparent"
                     Row {
                         anchors.verticalCenter: parent.verticalCenter                    
                         Text {
                             text: "Devices List"
-                            color: "#ffffff"
+                            color: Theme.primaryTextColor
                             font {
                                 pixelSize: 17
                                 weight: 400
@@ -56,7 +58,7 @@ PanelWindow {
                         Text {
                             text: " (scanning)"
                             visible: blue_panel.adapter.discovering
-                            color: "#ffffff"
+                            color: Theme.primaryTextColor
                             font {
                                 pixelSize: 17
                                 weight: 400
@@ -70,7 +72,7 @@ PanelWindow {
                         anchors.right: parent.right
                         Text {
                             anchors.centerIn: parent
-                            color: "#ffffff"
+                            color: Theme.primaryTextColor
                             text: !blue_panel.adapter.discovering ? "󰑓": ""
                             font {
                                 pixelSize: 15
@@ -91,7 +93,7 @@ PanelWindow {
                 Rectangle {
                     implicitWidth: parent.implicitWidth
                     implicitHeight: 10
-                    color: "#00ffffff"
+                    color: "transparent"
                     Rectangle {
                         anchors.centerIn: parent
                         implicitWidth: parent.implicitWidth
@@ -110,9 +112,7 @@ PanelWindow {
                         
                         Repeater {
                             model: blue_panel.adapter.devices.values
-                            BlueDeviceWidget{
-
-                            }
+                            BlueDeviceWidget{}
                             
                         }
                         
