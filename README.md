@@ -14,7 +14,7 @@ A Quickshell Configuration, made by yours truly
     - [x] Notifications
     - [x] IdleInhibitor
 
-- [ ] App Launcher
+- [x] App Launcher
 - [x] Notification Viewer
-- [ ] Lockscreen
+- [x] Lockscreen
 
