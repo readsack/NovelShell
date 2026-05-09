@@ -16,6 +16,7 @@ import Quickshell.Services.Pam
 import Quickshell.Networking
 import Quickshell.Wayland
 import Quickshell.Widgets
+import QtQml
 import "./Modules"
 
 Scope {
@@ -193,7 +194,7 @@ Scope {
 
             Image {
                 id: lock_bg
-                source: "/home/readsack/Wallpaper/wallhaven-lyqxqq_2880x1800.png"
+                source: Theme.theme.lock_screen
                 anchors.fill: parent
                 visible: false
             }
