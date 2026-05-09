@@ -14,3 +14,14 @@ A Quickshell Configuration, made by yours truly
 - Define new themes under ./config/quickshell/themes
 - Change theme file under the ```themePath``` field of ./config/quickshell/config/config.json
 - You'll need to add lockscreen wallpapers manually to whichever theme you want to use, since I don't want to include any wallpapers along with the github repo.
+
+Here's a theme file format
+```json
+{
+    "backgroundColor": # background color,
+    "primaryTextColor": # primary text color,
+    "secondaryTextColor": # secondary text color,
+    "disabledColor": # color for disabled buttons/ui elements,
+    "lock_screen": # lock screen path (only absolute paths allowed)
+}
+```
