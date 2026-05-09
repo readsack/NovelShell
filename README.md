@@ -2,6 +2,12 @@
 A Quickshell Configuration, made by yours truly
 
 **NOTE**: Made for Hyprland + Arch **ONLY**
+## Demo Video
+
+
+https://github.com/user-attachments/assets/193b3a6a-0d07-457c-94e2-164bb6a18c4c
+
+
 
 ## Installing Guide
 - Clone the repo
